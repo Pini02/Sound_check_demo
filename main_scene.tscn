@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c03j4pnf8pc20"]
+
+[ext_resource type="Script" path="res://main_scene.gd" id="1_bff6e"]
+[ext_resource type="Texture2D" uid="uid://dw1m4dpbe47pj" path="res://icon.svg" id="1_w06u5"]
+[ext_resource type="AudioStream" uid="uid://bxlgrr50e12er" path="res://Inseguimento - 0006 - Instrument - Preso.wav" id="2_220sa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sadrg"]
+size = Vector2(709.5, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgyiv"]
+size = Vector2(39, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m10a3"]
+size = Vector2(435, 202)
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_bff6e")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_220sa")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(115, 151)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(439, 211)
+scale = Vector2(5.3125, 1)
+texture = ExtResource("1_w06u5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(428, 211)
+shape = SubResource("RectangleShape2D_sadrg")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(252, -453)
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+position = Vector2(322, 233)
+scale = Vector2(0.273438, 0.359375)
+texture = ExtResource("1_w06u5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(321.5, 232.5)
+shape = SubResource("RectangleShape2D_qgyiv")
+
+[node name="ZeroSound" type="Area2D" parent="."]
+position = Vector2(31, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZeroSound"]
+position = Vector2(666.5, 191)
+shape = SubResource("RectangleShape2D_m10a3")

@@ -29,4 +29,6 @@ func _physics_process(delta):
 func add_inventory(item):
 	inventory.append(item)
 
-		
+func p_inventory():
+	for i in range(len(inventory)):
+		print(inventory[i])

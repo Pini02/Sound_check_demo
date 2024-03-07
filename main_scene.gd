@@ -22,3 +22,4 @@ func _on_key_body_entered(body):
 	$Character.add_inventory("Key")
 	print("chiave")
 	$Key.queue_free()
+	$WALL.queue_free()

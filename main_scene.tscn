@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c03j4pnf8pc20"]
+[gd_scene load_steps=10 format=3 uid="uid://c03j4pnf8pc20"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_bff6e"]
 [ext_resource type="Texture2D" uid="uid://jvd2ndo5tj8k" path="res://icon.svg" id="1_w06u5"]
@@ -11,6 +11,12 @@ size = Vector2(709.5, 130)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m10a3"]
 size = Vector2(435, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvyyi"]
+size = Vector2(1884, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_du5su"]
+size = Vector2(239.5, 1213)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_bff6e")
@@ -41,5 +47,17 @@ position = Vector2(666.5, 191)
 shape = SubResource("RectangleShape2D_m10a3")
 
 [node name="Key" parent="." groups=["Key"] instance=ExtResource("5_n44qp")]
+
+[node name="2ND Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2ND Floor"]
+position = Vector2(1983, 364)
+shape = SubResource("RectangleShape2D_bvyyi")
+
+[node name="WALL" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALL"]
+position = Vector2(1165, -305)
+shape = SubResource("RectangleShape2D_du5su")
 
 [connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]

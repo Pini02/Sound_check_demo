@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://c03j4pnf8pc20"]
+[gd_scene load_steps=8 format=3 uid="uid://c03j4pnf8pc20"]
 
 [ext_resource type="Script" path="res://main_scene.gd" id="1_bff6e"]
-[ext_resource type="Texture2D" uid="uid://dw1m4dpbe47pj" path="res://icon.svg" id="1_w06u5"]
-[ext_resource type="AudioStream" uid="uid://bxlgrr50e12er" path="res://Inseguimento - 0006 - Instrument - Preso.wav" id="2_220sa"]
+[ext_resource type="Texture2D" uid="uid://jvd2ndo5tj8k" path="res://icon.svg" id="1_w06u5"]
+[ext_resource type="AudioStream" uid="uid://b26rt14ngccfa" path="res://Inseguimento - 0006 - Instrument - Preso.wav" id="2_220sa"]
+[ext_resource type="PackedScene" uid="uid://ca57xvfflocws" path="res://Character.tscn" id="4_uu7mh"]
+[ext_resource type="PackedScene" uid="uid://0ajeh6wrfnlg" path="res://key.tscn" id="5_n44qp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sadrg"]
 size = Vector2(709.5, 130)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgyiv"]
-size = Vector2(39, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m10a3"]
 size = Vector2(435, 202)
@@ -31,17 +30,8 @@ texture = ExtResource("1_w06u5")
 position = Vector2(428, 211)
 shape = SubResource("RectangleShape2D_sadrg")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(252, -453)
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-position = Vector2(322, 233)
-scale = Vector2(0.273438, 0.359375)
-texture = ExtResource("1_w06u5")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(321.5, 232.5)
-shape = SubResource("RectangleShape2D_qgyiv")
+[node name="Character" parent="." instance=ExtResource("4_uu7mh")]
+position = Vector2(483, 14)
 
 [node name="ZeroSound" type="Area2D" parent="."]
 position = Vector2(31, 7)
@@ -49,3 +39,7 @@ position = Vector2(31, 7)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZeroSound"]
 position = Vector2(666.5, 191)
 shape = SubResource("RectangleShape2D_m10a3")
+
+[node name="Key" parent="." groups=["Key"] instance=ExtResource("5_n44qp")]
+
+[connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]
